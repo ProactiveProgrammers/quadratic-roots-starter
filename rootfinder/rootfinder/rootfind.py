@@ -9,7 +9,7 @@ def calculate_quadratic_equation_roots(
 ) -> Tuple[Union[float, complex], Union[float, complex]]:
     """Calculate the roots of a quadratic equation."""
     # TODO: Use the source code example on page 21 of the
-    # "Doing Math with Python to implement this function.
+    # "Doing Math with Python" to implement this function.
     # TODO: Your function should take as input the values
     # of a, b, and c and return the values of x_one
     # and x_two as a two-tuple of values.
