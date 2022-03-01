@@ -15,7 +15,7 @@ def main(
     a: float = typer.Option(1), b: float = typer.Option(2), c: float = typer.Option(2)
 ):
     """Calculate the roots of a quadratic equation using the quadratic formula."""
-    # TODO: create a console for rich text output
+    # create a console for rich text output
     console = Console()
     # TODO: display the debugging output for the program's command-line arguments
     # TODO: display three lines of output following the expected output
