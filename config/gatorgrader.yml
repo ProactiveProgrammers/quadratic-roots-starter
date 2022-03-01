@@ -40,8 +40,8 @@ writing/reflection.md:
 CountCommits --count 5
 
 # # --> check that the program executes correctly and produces exactly 6 lines of output
-ExecuteCommand --command "cd rootfinder; poetry run rootfinder --a 1 --b 1 --c 1; cd .."
-CountCommandOutput --command "cd rootfinder; poetry run rootfinder --a 1 --b 1 --c 1; cd .." --count 7 --exact
+# ExecuteCommand --command "cd rootfinder; poetry run rootfinder --a 1 --b 1 --c 1; cd .."
+# CountCommandOutput --command "cd rootfinder; poetry run rootfinder --a 1 --b 1 --c 1; cd .." --count 7 --exact
 
 # Output of the Python Program:
 
