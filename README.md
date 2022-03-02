@@ -1,7 +1,7 @@
 # Quadratic Roots
 
 ## Assigned: Tuesday, March 1, 2022
-## Due: Tuesday, March 8, 202<!--  -->2
+## Due: Tuesday, March 8, 2022
 
 After cloning this repository to your computer, please take the following steps:
 
