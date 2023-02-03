@@ -1,9 +1,8 @@
 """Test suite to ensure that each function words correctly."""
 
-from rootfinder import __version__
-
 from pytest import approx
 
+from rootfinder import __version__
 from rootfinder import rootfind
 
 

@@ -1,8 +1,7 @@
 """Calculate the roots of a quadratic equation given values for a, b, and c."""
 
-from rich.console import Console
-
 import typer
+from rich.console import Console
 
 from rootfinder import rootfind
 
