@@ -1,0 +1,139 @@
+setup: |
+  cd rootfinder && poetry install
+  echo "Done installing project dependencies!"
+---
+
+# --> check the Python program
+- rootfinder/rootfinder/main.py:
+  - description: Ensure that the main.py file exists in the rootfinder/rootfinder/ directory
+    check: ConfirmFileExists
+  - description: Complete all TODOs, remove the TODO markers in the main.py
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
+  - description: Create a sufficient number of docstring (i.e., multiple-line) comments in main.py
+    check: CountMultipleLineComments
+    options:
+      language: "Python"
+      count: 2
+      exact: false
+  - description: Create a sufficient number of single-line comments in main.py
+    check: CountSingleLineComments
+    options:
+      language: "Python"
+      count: 4
+      exact: false
+
+# --> check the Python program
+- rootfinder/rootfinder/rootfind.py:
+  - description: Ensure that the rootfind.py file exists in the rootfinder/rootfinder/ directory
+    check: ConfirmFileExists
+  - description: Complete all TODOs, remove the TODO markers in the rootfind.py
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
+  - description: Create a sufficient number of docstring (i.e., multiple-line) comments in rootfind.py
+    check: CountMultipleLineComments
+    options:
+      language: "Python"
+      count: 2
+      exact: false
+
+# --> check the technical writing for various characteristics
+- writing/reflection.md:
+  - description: Ensure that the reflection.md file exists in the writing/ directory
+    check: ConfirmFileExists
+  - description: Complete all TODOs, remove the TODO markers, and rewrite comments for the reflection
+    check: MatchFileFragment
+    options:
+      fragment: TODO
+      count: 0
+      exact: true
+  - description: Delete the 'Add Your Name Here' prompt in the reflection file
+    check: MatchFileFragment
+    options:
+      fragment: "Add Your Name Here"
+      count: 0
+      exact: true
+  - description: Write a minimum number of meaningful words in the reflection
+    check: CountFileWords
+    options:
+      count: 300
+      exact: false
+  - description: Confirm that the markdown file has the correct number of headers
+    check: CountMarkdownTags
+    options:
+      tag: heading
+      count: 13
+      exact: true
+  - description: Confirm that the markdown file has the correct number of fenced code blocks
+    check: CountMarkdownTags
+    options:
+      tag: code_block
+      count: 3
+      exact: false
+  - description: Confirm that the markdown file has the correct number of code blocks
+    check: CountMarkdownTags
+    options:
+      tag: code
+      count: 8
+      exact: false
+
+# run the program and confirm the existence of fragments in its output
+- description: "Run the program and confirm the existence of content in its output: x_two = (-0.5-0.8660254037844386j)"
+  check: MatchCommandFragment
+  options:
+    command: "cd rootfinder && poetry run rootfinder --a 1 --b 1 --c 1"
+    fragment: x_two = (-0.5-0.8660254037844386j)
+    count: 1
+    exact: true
+
+# run the program and confirm correct number of lines in the output
+- description: "Run the program and confirm the correct number of lines in the output: 7 lines of output"
+  check: CountCommandOutput
+  options:
+    command: "cd rootfinder && poetry run rootfinder --a 1 --b 1 --c 1"
+    count: 7
+    exact: true
+
+# run a command
+- description: Pass the source code formatting checks run by black
+  command: cd rootfinder && poetry run task black
+
+# run a command
+- description: Pass the linting checks run by flake8
+  command: cd rootfinder && poetry run task flake8
+
+# run a command
+- description: Pass the import checks run by isort
+  command: cd rootfinder && poetry run task isort
+
+# run a command
+- description: Pass the linting checks run by mypy
+  command: cd rootfinder && poetry run task mypy
+
+# run a command
+- description: Pass the linting checks run by pydocstyle
+  command: cd rootfinder && poetry run task pydocstyle
+
+# run a command
+- description: Pass the linting checks run by pylint
+  command: cd rootfinder && poetry run task pylint
+
+# run a command
+- description: Pass the linting checks run by pymarkdown
+  command: cd rootfinder && poetry run task markdownlint
+
+# run a command
+- description: Pass all of the Pytest test cases
+  command: cd rootfinder && poetry run task test
+
+  # count number of commits in the GitHub repository
+- description: Have at least a specific minimum of commits in repository
+  check: CountCommits
+  options:
+    count: 10
